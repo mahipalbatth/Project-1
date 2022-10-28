@@ -25,11 +25,23 @@ fetch("https://api.punkapi.com/v2/beers")
 
 });
 
+//EVENT LISTNERS
 //wait for dom to be loaded and beer object fetched before button can work
 document.addEventListener("DOMContentLoaded", function(){
     //click event listner
     document.getElementById("randomButton").addEventListener("click", randomBeerGenerator);
 })
+
+//key press event listner
+document.addEventListener("keypress", function(){
+    //generate random index
+    const pickedObjectIndex = randomNumberGenerator(names.length);
+
+    //generate text for menu section
+    document.getElementById('beerName').innerHTML= 'Serving up some ' + names[pickedObjectIndex] + '?';
+    document.getElementById('foodName').innerHTML= 'Well try these foods; ' + food[pickedObjectIndex];
+})
+
 
 
 //function that determines how many hours left in the day and suggests a random beer from big beer object
