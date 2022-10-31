@@ -20,9 +20,18 @@
         <p>Press any key to get a new Menu!</p>
         <p id ='beerName'></p>
         <p id ='foodName'></p>
-
+    
 
 
         <!-- random beer art using touch event listner -->
+        <h2>Beer Artwork</h2>
+        Touch the Bottle to Scroll Through Some Beer Artwork
+        <button onclick= 'generateNewArtwork()'>Or Click Here!</button>
+        <br>
+        <br>
+        <br>
+
+        <img ontouchstart='generateNewArtwork()' src="https://images.punkapi.com/v2/7.png" id="beerArt" style=" width: 100px; height: 300px">
+
     </body>
 </html>

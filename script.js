@@ -43,6 +43,13 @@ document.addEventListener("keypress", function(){
 })
 
 
+//touch event listner
+document.addEventListener("ontouchstart", function(){
+    generateNewArtwork();
+    
+})
+
+
 
 //function that determines how many hours left in the day and suggests a random beer from big beer object
 function randomBeerGenerator() {
@@ -63,3 +70,11 @@ function randomBeerGenerator() {
 function randomNumberGenerator(endingIndex) {
     return Math.floor(Math.random() * (endingIndex));
 }
+
+//function that generates and updates random image art
+function generateNewArtwork() {
+
+    document.getElementById('beerArt').src=images[randomNumberGenerator(images.length)];
+    console.log('wana show this', images[randomNumberGenerator(images.length)])
+}
+
