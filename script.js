@@ -10,20 +10,26 @@ fetch("https://api.punkapi.com/v2/beers")
 .then(function (response) {
     return response.json();
 })
-.then(function (bigBeerObject) {
-    console.log(bigBeerObject);
+.then(function (beers) {
+    console.log(beers);
 
-    //starting at zero and stoping if my counter becomes bigger than my bigbeer objects length
-    for (i=0; i<bigBeerObject.length; i++) {
+    let i = 0;
+    beers.forEach(beer => {
 
-        //extracting names, food and image from big beer object an creating my own arrays
-        names[i] = bigBeerObject [i].name,
-        food[i] = bigBeerObject[i].food_pairing;
-        images[i] = bigBeerObject[i].image_url;
-     }
-     console.log("my custom arrys", names, food, images);
+        //constructing my custom arrays
+        names[i] = beer.name;
+        food[i] = beer.food_pairing;
+        images[i] = beer.image_url;
+
+
+        //incrementing my counter after each iteration
+        i++;
+
+    });
+    console.log("foreach", names, food, images);
 
 });
+
 
 //adding EVENT LISTNERS
 //wait for dom to be loaded and beer object fetched before button can work
@@ -39,7 +45,7 @@ function randomBeerEL() {
 
 
 //key press event listner
-document.addEventListener("keypress", randomMenuEL);
+document.addEventListener("keypress", randomMenuEL); 
 
 function randomMenuEL() {
 
@@ -48,7 +54,7 @@ function randomMenuEL() {
 
     //generate text for menu section
     document.getElementById('beerName').innerHTML= 'Serving up some ' + names[pickedObjectIndex] + '?';
-    document.getElementById('foodName').innerHTML= 'Well try these foods; ' + food[pickedObjectIndex];
+    document.getElementById('foodName').innerHTML= 'Well try these foods: ' + food[pickedObjectIndex];
 }
 
 
@@ -64,8 +70,8 @@ function randomArtEL() {
 
 //function that determines how many hours left in the day and suggests a random beer from big beer object
 function randomBeerGenerator() {
-    // using var instead of const because i want to reassign a value to hours left
-    var hoursLeft = new Date();
+    
+    let hoursLeft = new Date();
     console.log(hoursLeft, hoursLeft.getHours());
     hoursLeft = 24 - hoursLeft.getHours();
 
