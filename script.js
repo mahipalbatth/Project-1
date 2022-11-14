@@ -29,21 +29,24 @@ fetch("https://api.punkapi.com/v2/beers")
 
 //adding EVENT LISTNERS
 //wait for dom to be loaded and beer object fetched before button can work
-document.addEventListener("DOMContentLoaded", randomBeerEL);
+document.addEventListener("DOMContentLoaded", callEventListeners);
 
-
-//Event Listner functions
-function randomBeerEL() {
+function callEventListeners() {
 
     //click event listner
     document.getElementById("randomButton").addEventListener("click", randomBeerGenerator);
+
+    //key press event listner
+    document.addEventListener("keypress", randomMenuGenerator); 
+
+    //touch event listner
+    document.getElementById("beerArt").addEventListener("touchstart", randomArtGenerator);
+
+
 }
 
-
-//key press event listner
-document.addEventListener("keypress", randomMenuEL); 
-
-function randomMenuEL() {
+//Generate content for beer and food paragraphs 
+function randomMenuGenerator() {
 
     //generate random index
     const pickedObjectIndex = randomNumberGenerator(names.length);
@@ -54,10 +57,8 @@ function randomMenuEL() {
 }
 
 
-//touch event listner
-document.addEventListener("ontouchstart", randomArtEL);
-
-function randomArtEL() {
+//function be used with touch event listener and for clicking too
+function randomArtGenerator() {
     generateNewArtwork();
 
 }
