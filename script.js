@@ -13,8 +13,7 @@ fetch("https://api.punkapi.com/v2/beers")
 .then(function (beers) {
     console.log(beers);
 
-    let i = 0;
-    beers.forEach(beer => {
+    beers.forEach((beer, i) => {
 
         //constructing my custom arrays
         names[i] = beer.name;
@@ -22,11 +21,8 @@ fetch("https://api.punkapi.com/v2/beers")
         images[i] = beer.image_url;
 
 
-        //incrementing my counter after each iteration
-        i++;
-
     });
-    console.log("foreach", names, food, images);
+    console.log("array from foreach", names, food, images);
 
 });
 
